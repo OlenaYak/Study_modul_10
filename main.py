@@ -28,8 +28,7 @@ class Record:
         self.phones = []
 
     def add_phone(self, phone_number):
-        phone = Phone(phone_number)
-        phone.phone_valid()                   
+        phone = Phone(phone_number)                 
         self.phones.append(phone)
 
     def remove_phone(self, phone_number):
@@ -40,6 +39,8 @@ class Record:
     def edit_phone(self, old_phone, new_phone):
         for phone in self.phones:
             if phone.value == old_phone:
+                new_phone_check = Phone(new_phone)
+                new_phone_check.phone_valid()
                 phone.value = new_phone
                 return
         raise ValueError(f'{old_phone} not exist')
